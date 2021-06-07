@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %} {{ page.title }} {% endblock %}
+
+{% block content %}
+
+<h1 class="mt-5">{{ tourcategory.title }} </h1>
+{% for tours_sub in tourcategory.categorytour_set.all %}
+  <a href='{{ tours_sub.tour.get_absolute_url }}'>  {{ tours_sub.tour.title }}</a> <br><br>
+{% endfor %}
+
+{% endblock content %}

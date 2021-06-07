@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} {{ page.title }} {% endblock %}
+
+{% block content %}
+
+<h1 class="mt-5">{{ tour.title }}</h1>
+
+<h2>Tour Description</h2>
+{{ tour.Description }}
+<h2>Tour Program</h2>
+{{ tour.tour_program | safe}}
+
+<h2>Tour Photos</h2>
+    <div class="row">
+        {% for tourphoto_sub in tour.tourphotos_set.all %}
+            <div class="col-md-3 text-center">
+            <img src='{{ tourphoto_sub.image.url }}' class='img-thumbnail'>
+            </a>
+            </div>
+         {% endfor %}
+
+<h2>Tour Prices</h2>
+<table class="table table-striped">
+    <tr><th>Title</th><th>Begin Date</th><th>End Date</th><th>Price for single</th><th>Price for Double</th></tr>
+{% for prices_sub in tour.tourprices_set.all %}
+    <tr><th>{{ prices_sub.title }}</th><th>{{ prices_sub.begin_date }}</th><th>{{ prices_sub.end_date }}</th><th>{{ prices_sub.price_dollar_for_single }}</th><th>{{ prices_sub.price_dollar_for_double }}</th></tr>
+{% endfor %}
+</table>
+{% endblock content %}
