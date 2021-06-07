@@ -9,7 +9,19 @@ admin.site.register(Page,PageAdmin)
 admin.site.register(Slide)
 admin.site.register(Option)
 admin.site.register(TourCategory)
-admin.site.register(Tour)
+
+class PriceInline(admin.TabularInline):
+    model = TourPrices
+    extra = 3
+
+class PhotoInline(admin.TabularInline):
+    model = TourPhotos
+    extra = 5
+
+class TourAdmin(admin.ModelAdmin):
+    inlines = [PriceInline,PhotoInline]
+
+admin.site.register(Tour,TourAdmin)
 admin.site.register(TourPhotos)
 
 class TourPricesAdmin(admin.ModelAdmin):
