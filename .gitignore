@@ -18,4 +18,6 @@ geckodriver.log
 media
 
 mysite/media
-toursite/migrations
+mysite/migrations
+
+db.sqlite3
